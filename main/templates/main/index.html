@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <a href="{% url 'home' %}" class="a-unstyled">
+        {% if not category %}
+        <h1 class="blue">Biographer</h1>
+        {% else %}
+        <h1 class="blue">{{ category.name }}</h1>
+        {% endif %}
+    </a>
+</div>
+
+<br style="line-height: 100%;">
+
+{% if not category %}
+<div class="row justify-content-center">
+    <button type="button" class="btn" onclick="showPeople()"><u>People</u></button>
+    <button type="button" class="btn" onclick="showCategories()"><u>Categories</u></button>
+</div>
+{% endif %}
+
+<div id="people" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    {% for person in people %}
+        <a href="{% url 'biography' name=person.name %}" class="text-center a-unstyled col py-3 px-lg-5">
+            {{ person.name }}
+        </a>
+    {% endfor %}
+</div>
+
+<div id="categories" style="display: none" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    {% for category in categories %}
+        <a href="{% url 'index' category=category.name %}" class="text-center a-unstyled col py-3 px-lg-5">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+</div>
+
+{% if not category %}
+{% load static %}
+<div class="row justify-content-center mt-4">
+    <p>View raw <a href="{% static 'people.txt' %}">list</a>.</p>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+    let people = document.getElementById('people');
+    let categories = document.getElementById('categories');
+
+    function showPeople() {
+        categories.style.display = 'none';
+        people.style.display = '';
+    }
+
+    function showCategories() {
+        people.style.display = 'none';
+        categories.style.display = '';
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <a href="{% url 'home' %}" class="a-unstyled">
+        <h1 class="blue">{{ person.name }}</h1>
+    </a>
+</div>
+
+<br style="line-height: 100%;">
+
+<div class="row justify-content-center mb-5">
+    <div class="card">
+        <div class="group">
+            {% for paragraph in person.desc %}
+                <p class="text-justify">{{ paragraph }}</p>
+            {% endfor %}
+            <a target="_blank" href="{{ person.url }}">More at Wikipedia</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

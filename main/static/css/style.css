@@ -1,0 +1,38 @@
+body {
+    background-color: #F0F0F0;
+
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, p {
+    color: #101010;
+}
+
+.blue {
+    color: #232479;
+}
+
+.a-unstyled {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    text-decoration-color: none;
+}
+
+.a-unstyled:hover {
+    color: inherit;
+    text-decoration: none;
+    text-decoration-color: none;
+}
+
+.a-unstyled:active. .a-unstyled:focus {
+    outline: none;
+}
+
+.card {
+    background-color: transparent;
+    border-color: transparent;
+    width: 30rem;
+}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <h1 class="blue">Biographer</h1>
+</div>
+
+<br style="line-height: 100%;">
+
+<div class="row justify-content-center">
+    <form action="{% url 'search' %}" method="post" id="search">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Search" aria-label="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Go!</button>
+          </span>
+        </div>
+    </form>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <button type="button" class="btn" onclick="randomPerson()">Random</button>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <p>Take a look at our <a href="{% url 'index' %}">index</a>.</p>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+    let people = "{{ people }}".split(", ");
+
+    // Give autocomplete suggestions
+    $(function() {
+        $('#name').autocomplete({
+            source: people
+        });
+    });
+
+    // Automatically send form on enter
+    document.getElementById('name').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            document.getElementById('search').submit();
+        }
+    });
+
+    function randomPerson() {
+        const index = Math.floor(Math.random() * people.length);
+        document.getElementById('name').value = people[index];
+    }
+</script>
+{% endblock %}

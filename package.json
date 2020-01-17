@@ -1,0 +1,4 @@
+"scripts": {
+  "heroku-postbuild": "python3 nltk-package-installer && python3 manage.py populate main/static/people.txt"
+}
+
