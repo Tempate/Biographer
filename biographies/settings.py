@@ -92,7 +92,7 @@ DATABASES = {
 import dj_database_url
 
 DATABASES = {
-    "default": dj_database_url.parse("")
+    "default": dj_database_url.parse("postgres://ourlrrtwgxcpgw:70608bcaa35a3cad5ddf2a1dba657d603154223d03397a80a73b2492d8a9ae31@ec2-54-247-72-30.eu-west-1.compute.amazonaws.com:5432/d7ndgen7j2pkfr")
 }
 
 
